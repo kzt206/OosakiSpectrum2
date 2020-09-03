@@ -137,7 +137,7 @@ public class FftFunc2 {
 		Complex[] complex = r2cfft(N, data, samplingF, ND);
 		double deltaT = 1 / samplingF;
 
-		double[][] coef = new double[complex.length][2];
+		double[][] coef = new double[complex.length][3];
 
 		System.out.println();
 		System.out.println("finite fft start!");
@@ -145,6 +145,7 @@ public class FftFunc2 {
 		for (int ii = 0; ii < complex.length / 2 + 1; ii++) {
 			coef[ii][0] = 2 * complex[ii].real(); // Ak cos coeficient
 			coef[ii][1] = -2 * complex[ii].image(); // Bk sin coeficient
+			coef[ii][2] = ii / (N * deltaT); // frequency
 			double amp = 2 * complex[ii].abs();
 			double phase = Math.atan(-1 * coef[ii][1] / coef[ii][0]) / Math.PI * 180.;
 			double power;
