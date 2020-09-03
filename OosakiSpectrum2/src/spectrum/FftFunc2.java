@@ -137,7 +137,7 @@ public class FftFunc2 {
 		Complex[] complex = r2cfft(N, data, samplingF, ND);
 		double deltaT = 1 / samplingF;
 
-		double[][] coef = new double[N][2];
+		double[][] coef = new double[complex.length][2];
 
 		System.out.println();
 		System.out.println("finite fft start!");
@@ -153,7 +153,7 @@ public class FftFunc2 {
 			} else {
 				power = amp * amp / 2;
 			}
-			double fas = amp * N * deltaT / 2;
+			double fas = amp * complex.length * deltaT / 2;
 			System.out.printf("%2d, f:%7.3f, A:%7.3f, B:%7.3f, AMP:%7.3e, PHASE:%7.3f ,FAS:%7.3f ,Power:%7.3f\n", ii,
 					ii / (N * deltaT), coef[ii][0], coef[ii][1], amp, phase, fas, power);
 		}
@@ -182,7 +182,8 @@ public class FftFunc2 {
 		double[][] coef = finitefft(N, data, samplingF, ND);
 		double deltaT = 1 / samplingF;
 
-		int nfold = N / 2 + 1;
+		int NT = coef.length;
+		int nfold = NT / 2 + 1;
 
 		double[][] fas = new double[nfold][2];
 
@@ -190,9 +191,9 @@ public class FftFunc2 {
 		System.out.println("Fourie Amplitude Spectrum Start!");
 		// print out
 		for (int ii = 0; ii < nfold; ii++) {
-			fas[ii][0] = ii / (N * deltaT);      // Frequency 
+			fas[ii][0] = ii / (NT * deltaT);      // Frequency 
 			double amp = Math.sqrt(Math.pow(coef[ii][0],2) + Math.pow(coef[ii][1],2));  // Amplitude
-			fas[ii][1] = amp * N * deltaT / 2;   // Fourier amplitude spectrum
+			fas[ii][1] = amp * NT * deltaT / 2;   // Fourier amplitude spectrum
 
 			System.out.printf("f:%10.8f, fas:%10.8f\n", fas[ii][0],fas[ii][1]);
 
