@@ -22,7 +22,7 @@ public class Test001Reidaiha {
 		
 		
 		// 2020/9/3 test for new fast
-		double[] testData2 = { 5., 32., 38., -33., -19., -10., 1., -8., -20., 10., -1., 4., 11., -1., -7., -2 ,0,0};
+		double[] testData2 = { 5., 32., 38., -33., -19., -10., 1., -8., -20., 10., -1., 4., 11., -1., -7., -2 , 0, 0};
 		
 		System.out.println("---- testData2 ----");
 		
