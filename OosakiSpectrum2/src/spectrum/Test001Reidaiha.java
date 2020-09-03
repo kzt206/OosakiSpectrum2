@@ -31,7 +31,7 @@ public class Test001Reidaiha {
 		
 		double[][] coef2 = FftFunc2.finitefft(nOfData2, testData2, samplingFrequency2, nOfData2);  // check P.42
 		
-		
+		double[][] fas2 = FftFunc2.fas(nOfData2, testData2, samplingFrequency2);
 		
 	}
 }
