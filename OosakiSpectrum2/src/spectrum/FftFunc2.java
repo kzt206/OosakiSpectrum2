@@ -20,19 +20,22 @@ public class FftFunc2 {
 		while (NT < N) {
 			NT *= 2;
 		}
-
-		Complex[] complex = new Complex[data.length];
+		
+		Complex[] complex = new Complex[NT];
 		for (int i = 0; i < data.length; i++) {
 			complex[i] = new Complex(data[i], 0.);
+		}
+		for(int i=data.length;i<NT;i++) {
+			complex[i] = new Complex(0.,0.);
 		}
 
 		int i = 1;
 		int j = 1;
-		int m = N / 2;
+		int m = NT / 2;
 //		double deltaT = 1 / samplingF;
 
 		// Bit Traverse
-		for (i = 1; i < N + 1; i++) {
+		for (i = 1; i < NT + 1; i++) {
 			if (i >= j) {
 				// goto 110
 			} else {
@@ -41,7 +44,7 @@ public class FftFunc2 {
 				complex[i - 1] = temp;
 			}
 
-			m = N / 2; // 110
+			m = NT / 2; // 110
 			do {
 				if (j <= m) { // 120
 					// j = j + m;
@@ -59,7 +62,7 @@ public class FftFunc2 {
 //		System.out.println();
 
 		int kmax = 1;
-		while (kmax < N) {
+		while (kmax < NT) {
 			int istep = kmax * 2;
 			for (int k = 1; k < kmax + 1; k++) {
 				Complex theta = new Complex(0., Math.PI * IND * (k - 1) / kmax);
