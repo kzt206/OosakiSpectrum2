@@ -45,15 +45,12 @@ public class Test002ElCentro {
 
 		}
 
-		FFT reidaihaFft = new FFT(nOfData, wave, samplingFrequency);
-
-		reidaihaFft.fft(nOfData, wave, samplingFrequency, nOfData, -1);
-		double[][] fas = reidaihaFft.fas(nOfData, wave, samplingFrequency, nOfData);
+		double[][] fas = FftFunc2.fas(nOfData, wave, samplingFrequency);
 
 		System.out.println("output to file");
 
 		// output data
-		File outfile = new File("El_Centro_FAS.txt");
+		File outfile = new File("El_Centro_FAS2.txt");
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(outfile))) {
 			String text;
 			for (int i = 0; i < fas.length; i++) {
